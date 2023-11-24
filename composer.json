@@ -1,0 +1,20 @@
+{
+    "name": "thefunpower/express_template",
+    "type": "library",
+    "description": "快递面单模板生成",
+    "keywords": ["php"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "kenken"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    }, 
+    "autoload": {  
+        "psr-4": {
+            "ExpressTemplate\\": "./lib/"
+        }
+    }
+}
