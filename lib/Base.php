@@ -13,7 +13,7 @@ class Base{
 
 	public function __construct (){
 		if(function_exists('host'))
-			$this->image_url = host().'/vendor/express_template/img';
+			$this->image_url = host().'/vendor/thefunpower/express_template/img';
 	}
 
 	public function do_output($body,$save_path='',$return_content=''){
@@ -23,7 +23,7 @@ class Base{
 		   'margin_left' => 5,
 		   'margin_right' => 5,
 		   'mirrorMargins' => false
-		]);
+		]); 
 		$mpdf->WriteHTML($body);
 		if($save_path){
            $dir = get_dir($save_path);
@@ -56,6 +56,7 @@ class Base{
 	public function  init (){
 		$this->revice_img_url = $this->revice_img_url?:$this->image_url."/revice.png";
 		$this->qr_url = $this->qr_url?:$this->image_url."/".$this->name."_qr.png";
+
 	}
  
 	public function qr($w = ''){

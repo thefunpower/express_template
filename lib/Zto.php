@@ -3,8 +3,7 @@ namespace ExpressTemplate;
 
 class Zto extends Base{  
 	public $name = 'zto'; 
-    public function output($option = []){ 
-        $t = new Base;
+    public function output($option = []){  
         $type = $option['type'];
         $return_content = $option['return_content']; 
         $name = $option['name'];
@@ -16,20 +15,20 @@ class Zto extends Base{
         $bag_addr_2 = $option['bag_addr_2'];
         $desc = $option['desc'];
         $save_path = $option['save_path'];  
-        $t->text([
+        $this->text([
             'right'=>6, 
             'top'=>5,
             'text'=>$type?:"标快",
             'bold'=>true,
         ]);  
-        $t->text([ 
+        $this->text([ 
             'left'=>6, 
             'top'=>10,
             'text'=>now(),
             'size'=>'6px', 
         ]); 
         if($name){
-            $t->text([ 
+            $this->text([ 
                 'left'=>6, 
                 'top'=>88,
                 'text'=>"品名内容：",
@@ -37,7 +36,7 @@ class Zto extends Base{
                 'warp'=>true,
                 'bold'=>true,
             ]); 
-            $t->text([ 
+            $this->text([ 
                 'left'=>19, 
                 'top'=>88.4,
                 'text'=>$name,
@@ -46,7 +45,7 @@ class Zto extends Base{
             ]); 
         } 
         if($desc){
-           $t->text([ 
+           $this->text([ 
                 'left'=>6, 
                 'top'=>93,
                 'text'=>"备注：",
@@ -55,7 +54,7 @@ class Zto extends Base{
                 'bold'=>true,
             ]); 
 
-            $t->text([ 
+            $this->text([ 
                 'left'=>14, 
                 'top'=>93.3,
                 'text'=>$desc,
@@ -64,45 +63,45 @@ class Zto extends Base{
                 'right'=>22,
             ]);  
         } 
-        $t->text([ 
+        $this->text([ 
             'left'=>1, 
             'top'=>16,
-            'text'=>$t->barcode($bill_code),
+            'text'=>$this->barcode($bill_code),
         ]);  
-        $t->text([ 
+        $this->text([ 
             'right'=>5, 
             'top'=>53,
-            'text'=>$t->barcode($bill_code,1),
+            'text'=>$this->barcode($bill_code,1),
             'rotate'=>-90,
         ]); 
-        $t->text([ 
+        $this->text([ 
             'left'=>15, 
             'top'=>106,
             'right'=>6,
             'size'=>'6px',
             'text'=>"本次服务适用中通官网(ww.zto.com)公示的快递服务协议条款，您对此单的签收代表您已收到快件且包装完好无损。", 
         ]); 
-        $t->text([  
+        $this->text([  
             'top'=>111,
             'left'=>15,
             'size'=>'10px',
             'text'=>"签收人/时间",
             'bold'=>true,
         ]); 
-        $t->text([  
+        $this->text([  
             'top'=>120,
             'right'=>6,
             'size'=>'12px',
             'text'=>"已验视&nbsp;&nbsp;&nbsp;&nbsp;已实名",
             'bold'=>true,
         ]); 
-        $t->text([ 
+        $this->text([ 
             'center'=>true, 
             'top'=>10, 
             'text'=>$mark,
             'bold'=>true,
         ]); 
-        $t->bill_code_lr([
+        $this->bill_code_lr([
             'bill_code'=>$bill_code,
             'top'=>5,
             'space'=>7,
@@ -111,7 +110,7 @@ class Zto extends Base{
             'num'=>4,  
             'prefix'=>'*&nbsp;&nbsp;'
         ]); 
-        $t->bill_code_lr([
+        $this->bill_code_lr([
             'bill_code'=>$bill_code,
             'top'=>5,
             'space'=>7,
@@ -120,7 +119,7 @@ class Zto extends Base{
             'num'=>4, 
             'prefix'=>'*&nbsp;&nbsp;'
         ]); 
-        $t->bill_code_tb([
+        $this->bill_code_tb([
             'bill_code'=>$bill_code,
             'top'=>1,
             'space'=>3,  
@@ -128,7 +127,7 @@ class Zto extends Base{
             'left'=>3, 
             'prefix'=>'*&nbsp;&nbsp;'
         ]); 
-        $t->bill_code_tb([
+        $this->bill_code_tb([
             'bill_code'=>$bill_code,
             'bottom'=>1,
             'space'=>3,  
@@ -136,25 +135,25 @@ class Zto extends Base{
             'left'=>3, 
             'prefix'=>'*&nbsp;&nbsp;'
         ]); 
-        $t->line([ 
+        $this->line([ 
             'top'=>16, 
             'left'=>4, 
         ]);  
-        $t->line([ 
+        $this->line([ 
             'top'=>36, 
             'left'=>4, 
         ]); 
-        $t->line([ 
+        $this->line([ 
             'top'=>50, 
             'left'=>4, 
         ]); 
-        $t->text([  
+        $this->text([  
             'top'=>40, 
             'left'=>6,
             'text'=>$bag_addr_1,
             'bold'=>true,
         ]); 
-        $t->text([  
+        $this->text([  
             'top'=>38, 
             'right'=>6,
             'text'=>$bag_addr_2,
@@ -162,79 +161,79 @@ class Zto extends Base{
             'left'=>57,
             'bold'=>true,
         ]); 
-        $t->vline([ 
+        $this->vline([ 
             'top'=>36, 
             'right'=>20,
             'height'=>69 
         ]); 
-        $t->text([ 
+        $this->text([ 
             'top'=>57.5, 
             'left'=>6, 
             'text'=>"收",
         ]);  
-        $t->text([ 
+        $this->text([ 
             'top'=>51, 
             'left'=>17, 
             'size'=>'9px',
-            'text'=>$t->parse_name($receiver['name']) ."  ".$t->parse_phone($receiver['phone']),
+            'text'=>$this->parse_name($receiver['name']) ."  ".$this->parse_phone($receiver['phone']),
             'bold'=>true,
         ]); 
-        $t->text([ 
+        $this->text([ 
             'top'=>60, 
             'left'=>17, 
             'size'=>'9px',
             'right'=>22,
-            'text'=>$t->parse_address($receiver['address']),
+            'text'=>$this->parse_address($receiver['address']),
             'bold'=>true,
         ]); 
-        $t->text([ 
+        $this->text([ 
             'top'=>76, 
             'left'=>17, 
             'size'=>'9px',
-            'text'=>$t->parse_name($sender['name']) ."  ".$t->parse_phone($sender['phone']), 
+            'text'=>$this->parse_name($sender['name']) ."  ".$this->parse_phone($sender['phone']), 
         ]); 
-        $t->text([ 
+        $this->text([ 
             'top'=>80, 
             'left'=>17, 
             'right'=>22, 
             'size'=>'7px',
-            'text'=>$t->parse_address($sender['address']), 
+            'text'=>$this->parse_address($sender['address']), 
         ]); 
-        $t->text([ 
+        $this->text([ 
             'left'=>4, 
             'top'=>106,
-            'text'=>$t->qr('30px'), 
+            'text'=>$this->qr('30px'), 
         ]); 
-        $t->line([ 
+        $this->line([ 
             'top'=>75, 
             'left'=>4, 
             'width'=>52, 
         ]); 
-        $t->vline([ 
+        $this->vline([ 
             'top'=>50, 
             'left'=>10,
             'height'=>37 
         ]); 
-        $t->line([ 
+        $this->line([ 
             'top'=>87, 
             'left'=>4,
             'width'=>52 
         ]); 
-        $t->text([ 
+        $this->text([ 
             'top'=>78, 
             'left'=>7, 
             'text'=>"寄",
             'size'=>"16px"
         ]); 
-        $t->line([ 
+        $this->line([ 
             'top'=>105, 
             'left'=>4, 
         ]); 
-        $t->line([ 
+        $this->line([ 
             'top'=>120, 
             'left'=>4, 
         ]);  
-        $body  = $t->render();   
+        $body  = $this->render();   
         return $this->do_output($body,$save_path,$return_content); 
     }
 }
