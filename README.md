@@ -1,21 +1,26 @@
 ## 快递面单打印模板
  
 
-安装
+### 安装
 
 ~~~
 composer require thefunpower/express_template
 ~~~
 
 
-使用
+### 使用
+
+### 中通面单
 
 ~~~
 use ExpressTemplate\Zto;  
 $zto = new Zto;
-$zto->image_url = 'http://****/lib';
-$zto->revice_img_url = "收的URL";
-$zto->qr_url         = "左下角LOGO的URL";
+$zto->image_url = 'http://sf1/wp-content/plugins/express/lib';
+//收 图片的URL地址
+$zto->revice_img_url = "";
+//底部左侧二维码的URL地址
+$zto->qr_url         = "";
+//保存的路径 
 $save_path = __DIR__.'/d.pdf'; 
 $zto->output([
     'bill_code'=>73100118865046,//运单号
@@ -39,6 +44,12 @@ $zto->output([
     //'save_path'=> $save_path
 ]);
 ~~~
+
+效果
+
+![中通](image/zto.jpg)
+
+
 
 
 
