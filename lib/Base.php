@@ -14,11 +14,11 @@ class Base{
 		if($save_path){
            $dir = get_dir($save_path);
            create_dir_if_not_exists([$dir]);
-           $mpdf->Output($save_path); 
+           return $mpdf->Output($save_path); 
         }else if($return_content){
-           $mpdf->Output('',"S"); 
+           return $mpdf->Output('',"S"); 
         } else{
-            $mpdf->Output(); 
+           return $mpdf->Output(); 
         }
 	}
 

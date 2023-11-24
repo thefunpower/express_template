@@ -249,6 +249,6 @@ class Zto{
             'mirrorMargins' => false
         ]);
         $mpdf->WriteHTML($body);
-        $this->do_output($mpdf,$save_path,$return_content); 
+        return $this->do_output($mpdf,$save_path,$return_content); 
     }
 }
