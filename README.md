@@ -41,7 +41,10 @@ $zto->output([
         'phone'=>'18900000002',
         'address'=>'北京北京北京北京北京北京北京北京北京北京北京',
     ],
-    //'save_path'=> $save_path
+    //保存PDF到指定目录
+    //'save_path'=> $save_path,
+    //返回PDF内容
+    //'return_content'=>true,
 ]);
 ~~~
 

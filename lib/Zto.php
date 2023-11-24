@@ -8,6 +8,7 @@ class Zto{
     public function output($option = []){ 
         $t = new Base;
         $type = $option['type'];
+        $return_content = $option['return_content']; 
         $name = $option['name'];
         $receiver = $option['receiver'];
         $sender = $option['sender'];
@@ -252,8 +253,10 @@ class Zto{
            $dir = get_dir($save_path);
            create_dir_if_not_exists([$dir]);
            $mpdf->Output($save_path); 
-        }else{
+        }else if($return_content){
+          $mpdf->Output('',"S"); 
+        } else{
             $mpdf->Output(); 
-        } 
+        }
     }
 }
