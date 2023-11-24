@@ -10,6 +10,11 @@ class Base{
 	public $image_url;
 	public $name = 'zto';
 
+	public function __construct (){
+		if(function_exists('host'))
+			$this->image_url = host().'/vendor/express_template/img';
+	}
+
 	public function do_output($body,$save_path='',$return_content=''){
 		$mpdf = Pdf::init([  
 		   'format'=>[$this->width, $this->height], 
@@ -48,8 +53,8 @@ class Base{
 	}
 
 	public function  init (){
-		$this->revice_img_url = $this->revice_img_url?:$this->image_url."/template/revice.png";
-		$this->qr_url = $this->qr_url?:$this->image_url."/template/".$this->name."_qr.png";
+		$this->revice_img_url = $this->revice_img_url?:$this->image_url."/revice.png";
+		$this->qr_url = $this->qr_url?:$this->image_url."/".$this->name."_qr.png";
 	}
  
 	public function qr($w = ''){

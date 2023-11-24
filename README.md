@@ -10,6 +10,10 @@ composer require thefunpower/express_template
 
 ### 使用
 
+~~~
+cp vendor/express_template/img  到对应的web目录
+~~~
+
 ### 中通面单
 
 ~~~
