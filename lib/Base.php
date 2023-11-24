@@ -5,8 +5,8 @@ class Base{
 	protected $str; 
 	protected $width = 76;
 	protected $height = 130;
-	protected $revice_img_url;
-	protected $qr_url;
+	public $revice_img_url;
+	public $qr_url;
 	public $base_url;
 	public $name = 'zto';
 
