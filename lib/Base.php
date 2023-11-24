@@ -7,10 +7,18 @@ class Base{
 	protected $height = 130;
 	public $revice_img_url;
 	public $qr_url;
-	public $base_url;
+	public $image_url;
 	public $name = 'zto';
 
-	public function do_output($mpdf,$save_path='',$return_content=''){
+	public function do_output($body,$save_path='',$return_content=''){
+		$mpdf = Pdf::init([  
+		   'format'=>[$this->width, $this->height], 
+		   'margin_top' => 5,
+		   'margin_left' => 5,
+		   'margin_right' => 5,
+		   'mirrorMargins' => false
+		]);
+		$mpdf->WriteHTML($body);
 		if($save_path){
            $dir = get_dir($save_path);
            create_dir_if_not_exists([$dir]);
@@ -40,8 +48,8 @@ class Base{
 	}
 
 	public function  init (){
-		$this->revice_img_url = $this->revice_img_url?:$this->base_url."/template/revice.png";
-		$this->qr_url = $this->qr_url?:$this->base_url."/template/".$this->name."_qr.png";
+		$this->revice_img_url = $this->revice_img_url?:$this->image_url."/template/revice.png";
+		$this->qr_url = $this->qr_url?:$this->image_url."/template/".$this->name."_qr.png";
 	}
  
 	public function qr($w = ''){

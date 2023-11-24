@@ -1,10 +1,8 @@
 <?php 
 namespace ExpressTemplate;
 use helper_v3\Pdf; 
-class Zto extends Base{
-    public $image_url; 
-    public $revice_img_url; 
-	public $qr_url; 
+class Zto extends Base{  
+	public $name = 'zto'; 
     public function output($option = []){ 
         $t = new Base;
         $type = $option['type'];
@@ -17,11 +15,7 @@ class Zto extends Base{
         $bag_addr_1 = $option['bag_addr_1'];
         $bag_addr_2 = $option['bag_addr_2'];
         $desc = $option['desc'];
-        $save_path = $option['save_path'];
-        $t->revice_img_url = $this->revice_img_url;
-        $t->qr_url         = $this->qr_url;
-        $t->name = 'zto';
-        $t->base_url = $this->image_url;
+        $save_path = $option['save_path'];  
         $t->text([
             'right'=>6, 
             'top'=>5,
@@ -240,15 +234,7 @@ class Zto extends Base{
             'top'=>120, 
             'left'=>4, 
         ]);  
-        $body  = $t->render();  
-        $mpdf = Pdf::init([  
-            'format'=>[76, 130], 
-            'margin_top' => 5,
-            'margin_left' => 5,
-            'margin_right' => 5,
-            'mirrorMargins' => false
-        ]);
-        $mpdf->WriteHTML($body);
-        return $this->do_output($mpdf,$save_path,$return_content); 
+        $body  = $t->render();   
+        return $this->do_output($body,$save_path,$return_content); 
     }
 }
