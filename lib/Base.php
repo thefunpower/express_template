@@ -1,7 +1,7 @@
 <?php 
 namespace ExpressTemplate;
 use lib\Str;
-class Template{
+class Base{
 	protected $str; 
 	protected $width = 76;
 	protected $height = 130;
