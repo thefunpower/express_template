@@ -1,7 +1,7 @@
 <?php 
 namespace ExpressTemplate;
 use helper_v3\Pdf; 
-class Zto{
+class Zto extends Base{
     public $image_url; 
     public $revice_img_url; 
 	public $qr_url; 
