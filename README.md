@@ -54,7 +54,7 @@ $zto->output([
 
 效果
 
-![中通](image/zto.jpg)
+![中通](example/zto.jpg)
 
 
 
