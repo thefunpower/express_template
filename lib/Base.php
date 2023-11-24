@@ -1,6 +1,7 @@
 <?php 
 namespace ExpressTemplate;
 use lib\Str;
+use helper_v3\Pdf; 
 class Base{
 	protected $str; 
 	protected $width = 76;
