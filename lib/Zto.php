@@ -2,8 +2,11 @@
 namespace ExpressTemplate;
 use helper_v3\Pdf; 
 class Zto{
-	public $image_url; 
-    public function output($option = []){
+    public $image_url; 
+    public $revice_img_url; 
+	public $qr_url; 
+    public function output($option = []){ 
+        $t = new Base;
         $type = $option['type'];
         $name = $option['name'];
         $receiver = $option['receiver'];
@@ -14,16 +17,16 @@ class Zto{
         $bag_addr_2 = $option['bag_addr_2'];
         $desc = $option['desc'];
         $save_path = $option['save_path'];
-        $t = new Base;
+        $t->revice_img_url = $this->revice_img_url;
+        $t->qr_url         = $this->qr_url;
         $t->name = 'zto';
         $t->base_url = $this->image_url;
-        $t->text([ 
+        $t->text([
             'right'=>6, 
             'top'=>5,
             'text'=>$type?:"标快",
             'bold'=>true,
-        ]); 
-
+        ]);  
         $t->text([ 
             'left'=>6, 
             'top'=>10,
@@ -46,8 +49,7 @@ class Zto{
                 'size'=>'9px',
                 'warp'=>true, 
             ]); 
-        }
-        
+        } 
         if($desc){
            $t->text([ 
                 'left'=>6, 
@@ -66,15 +68,12 @@ class Zto{
                 'warp'=>true,
                 'right'=>22,
             ]);  
-        }
-
-
+        } 
         $t->text([ 
             'left'=>1, 
             'top'=>16,
             'text'=>$t->barcode($bill_code),
-        ]); 
-
+        ]);  
         $t->text([ 
             'right'=>5, 
             'top'=>53,

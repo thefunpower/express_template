@@ -14,6 +14,8 @@ composer require thefunpower/express_template
 use ExpressTemplate\Zto;  
 $zto = new Zto;
 $zto->image_url = 'http://****/lib';
+$zto->revice_img_url = "收的URL";
+$zto->qr_url         = "左下角LOGO的URL";
 $save_path = __DIR__.'/d.pdf'; 
 $zto->output([
     'bill_code'=>73100118865046,//运单号
