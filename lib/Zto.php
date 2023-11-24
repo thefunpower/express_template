@@ -249,14 +249,6 @@ class Zto{
             'mirrorMargins' => false
         ]);
         $mpdf->WriteHTML($body);
-        if($save_path){
-           $dir = get_dir($save_path);
-           create_dir_if_not_exists([$dir]);
-           $mpdf->Output($save_path); 
-        }else if($return_content){
-          $mpdf->Output('',"S"); 
-        } else{
-            $mpdf->Output(); 
-        }
+        $this->do_output($mpdf,$save_path,$return_content); 
     }
 }
