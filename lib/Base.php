@@ -10,6 +10,7 @@ class Base{
 	public $qr_url;
 	public $image_url;
 	public $name = 'zto';
+	public $barcode_type = 'C128C';
 
 	public function __construct (){
 		if(function_exists('host'))
@@ -64,13 +65,12 @@ class Base{
 		return " 
 		 <img src='".$this->qr_url."' style='width:".$w."' />
         ";
-	}
-
+	} 
 
 	public function barcode($code,$size = 1.5){
 		return "
 		<div style='width:100%;'>
-		<barcode code='".$code."' type='C128C' height='0.9' style='margin-top:1mm;' size='".$size."' />
+		<barcode code='".$code."' type='".$this->barcode_type."' height='0.9' style='margin-top:1mm;' size='".$size."' />
         <div style='font-size: 3mm;text-align:center;width:100%;'>".$code."</div>
         </div>";
 	}
