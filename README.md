@@ -19,11 +19,11 @@ cp vendor/express_template/img  到对应的web目录
 ~~~
 use ExpressTemplate\Zto;  
 $zto = new Zto;
-$zto->image_url = 'http://sf1/wp-content/plugins/express/lib/template/';
+$zto->image_url = '';
 //收 图片的URL地址
-$zto->revice_img_url = "";
+$zto->revice_img_url = "http://sf1/wp-content/plugins/express/lib/template/revice.png";
 //底部左侧二维码的URL地址
-$zto->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/db_qr.jpg";
+$zto->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/zto_qr.png";
 //保存的路径 
 $save_path = __DIR__.'/d.pdf'; 
 $s = $zto->output([
