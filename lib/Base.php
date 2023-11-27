@@ -8,6 +8,7 @@ class Base{
 	protected $height = 130;
 	public $revice_img_url;
 	public $qr_url;
+	public $sender_img_url; 
 	public $image_url;
 	public $name = 'zto';
 	public $barcode_type = 'C128C';
@@ -57,7 +58,7 @@ class Base{
 	public function  init (){
 		$this->revice_img_url = $this->revice_img_url?:$this->image_url."/revice.png";
 		$this->qr_url = $this->qr_url?:$this->image_url."/".$this->name."_qr.png";
-
+		$this->sender_img_url = $this->sender_img_url?:$this->image_url."/"."sender.png";  
 	}
  
 	public function qr($w = ''){
@@ -81,8 +82,11 @@ class Base{
 		$ele_str = $this->get_html_option($arr);
 		if($text == '收'){
 			$this->init();
-			$text = "<img src='".$this->revice_img_url."' />";
-		}
+			$text = "<img src='".$this->revice_img_url."' style='width:33px;height:33px;margin_left:0px;' />";
+		} else if($text == '寄' && $arr['is_icon']){
+			$this->init(); 
+			$text = "<img src='".$this->sender_img_url."' style='width:20px;height:20px;' />";
+		}  
 		$str = "<div style='position: absolute; font-size:16px;rotate:$rotate;".$ele_str." '>$text</div>"; 
 		$this->str .= $str;
 	}
