@@ -4,6 +4,7 @@ namespace ExpressTemplate;
 class Zto extends Base{  
 	public $name = 'zto'; 
     public function output($option = []){  
+        $this->str = "";
         $type = $option['type'];
         $return_content = $option['return_content']; 
         $name = $option['name'];

@@ -4,6 +4,7 @@ namespace ExpressTemplate;
 class Yd extends Base{  
 	public $name = 'yd';  
     public function output($option = []){  
+        $this->str = "";
         $type = $option['type'];
         $return_content = $option['return_content']; 
         $name = $option['name'];

@@ -3,7 +3,8 @@ namespace ExpressTemplate;
 //德邦
 class Db extends Base{  
 	public $name = 'db';  
-    public function output($option = []){  
+    public function output($option = []){
+        $this->str = "";  
         $type = $option['type'];
         $return_content = $option['return_content']; 
         $name = $option['name'];
