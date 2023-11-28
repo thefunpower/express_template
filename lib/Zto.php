@@ -1,6 +1,6 @@
 <?php 
 namespace ExpressTemplate;
-
+//中通
 class Zto extends Base{  
 	public $name = 'zto'; 
     public function output($option = []){  

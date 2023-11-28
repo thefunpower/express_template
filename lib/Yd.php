@@ -1,6 +1,6 @@
 <?php 
 namespace ExpressTemplate;
-
+//韵达
 class Yd extends Base{  
 	public $name = 'yd'; 
     public $barcode_type = 'C128C';
