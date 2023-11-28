@@ -4,6 +4,7 @@
 ### 安装
 
 ~~~
+composer require thefunpower/helper
 composer require thefunpower/express_template
 ~~~
 
