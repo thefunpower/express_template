@@ -68,12 +68,26 @@ class Base{
         ";
 	} 
 
-	public function barcode($code,$size = 1.5){
-		return "
-		<div style='width:100%;'>
-		<barcode code='".$code."' type='".$this->barcode_type."' height='0.9' style='margin-top:1mm;' size='".$size."' />
-        <div style='font-size: 3mm;text-align:center;width:100%;'>".$code."</div>
-        </div>";
+	public function center($text,$font = 12){
+		return "<div style='display:flex;align-items:center;justify-content:center;text-align:center;font-size:".$font."px;'>".$text."</div>";
+	}
+
+	public function barcode($code,$arr = []){
+		$width     = $arr['width'];
+		$height    = $arr['height']?:30;
+		$font_size = $arr['font_size'];
+		$no_text  = $arr['no_text'];
+		$prefix  = $arr['prefix'];
+		$width = $width?$width.'mm':'100%';  
+		$str = '<div style="font-size:'.$font_size.'px;">'.$prefix.$code.'</div>';
+		if($no_text){
+			$str = '';
+		} 
+		$generator = new \Picqer\Barcode\BarcodeGeneratorPNG(); 
+		return '<div style="text-align:center;width:100%;display:flex;justify-content:center;align-items:center;margin-top:6px;">
+			<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($code, 'C128',2,$height)) . '" style="width:'.$width.';" />
+			'.$str.'
+		</div>';  
 	}
 
 	public function text($arr){ 
@@ -197,15 +211,21 @@ class Base{
 		$right = $arr['right'];
 		$text  = $arr['text'];
 		$width = $arr['width'];
+		$height = $arr['height'];
 		$bold  = $arr['bold'];
 		$center = $arr['center'];
 		$warp = $arr['warp']; 
 		$rotate = $arr['rotate']?:0;
 		$ele_str = '';
-		if($top)
+		if($top){
 			$ele_str = " top:".$top."mm; ";
-		if($width)
+		}
+		if($width){
 			$ele_str .= " width:".$width."mm; ";
+		}
+		if($height){
+			$ele_str .= " height:".$height."mm; ";
+		}
 		if($left){
 			$ele_str.=" left: ".$left.'mm; ';
 		}

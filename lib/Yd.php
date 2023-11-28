@@ -35,14 +35,15 @@ class Yd extends Base{
             ]);  
         } 
         $this->text([ 
-            'left'=>1, 
+            'left'=>5, 
+            'right'=>23, 
             'top'=>25, 
-            'text'=>$this->barcode($bill_code,1),
+            'text'=>$this->barcode($bill_code,['height'=>40]),
         ]);  
         $this->text([ 
             'right'=>5, 
-            'top'=>25,
-            'text'=>$this->barcode($bill_code,1),
+            'top'=>27, 
+            'text'=>$this->barcode($bill_code,['width'=>56]),
             'rotate'=>-90,
         ]);  
         $this->text([  
