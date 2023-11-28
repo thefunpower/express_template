@@ -2,8 +2,7 @@
 namespace ExpressTemplate;
 //德邦
 class Db extends Base{  
-	public $name = 'db'; 
-    public $barcode_type = 'C128C';
+	public $name = 'db';  
     public function output($option = []){  
         $type = $option['type'];
         $return_content = $option['return_content']; 

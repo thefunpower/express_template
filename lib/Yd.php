@@ -2,8 +2,7 @@
 namespace ExpressTemplate;
 //韵达
 class Yd extends Base{  
-	public $name = 'yd'; 
-    public $barcode_type = 'C128C';
+	public $name = 'yd';  
     public function output($option = []){  
         $type = $option['type'];
         $return_content = $option['return_content']; 

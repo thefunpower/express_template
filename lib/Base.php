@@ -11,7 +11,7 @@ class Base{
 	public $sender_img_url; 
 	public $image_url;
 	public $name = 'zto';
-	public $barcode_type = 'C128C';
+	public $barcode_type = 'C128';
 
 	public function __construct (){
 		if(function_exists('host'))
@@ -85,7 +85,7 @@ class Base{
 		} 
 		$generator = new \Picqer\Barcode\BarcodeGeneratorPNG(); 
 		return '<div style="text-align:center;width:100%;display:flex;justify-content:center;align-items:center;margin-top:6px;">
-			<img src="' . get_barcode($code, 'C128',2,$height) . '" style="width:'.$width.';" />
+			<img src="' . get_barcode($code, $this->barcode_type,2,$height) . '" style="width:'.$width.';" />
 			'.$str.'
 		</div>';  
 	}
