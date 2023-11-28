@@ -85,7 +85,7 @@ class Base{
 		} 
 		$generator = new \Picqer\Barcode\BarcodeGeneratorPNG(); 
 		return '<div style="text-align:center;width:100%;display:flex;justify-content:center;align-items:center;margin-top:6px;">
-			<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($code, 'C128',2,$height)) . '" style="width:'.$width.';" />
+			<img src="' . get_barcode($code, 'C128',2,$height) . '" style="width:'.$width.';" />
 			'.$str.'
 		</div>';  
 	}
