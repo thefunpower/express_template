@@ -140,6 +140,7 @@ $s = $yd->output([
     //'save_path'=> $save_path,
     //'return_content'=>true,
 
+    'to'=>'大桥路100号',
     'notice'=>'精准卡行',
     'desc1'=>'签收单: 原件返因<br>返单要求:签名、蓝章、身份证号、身份证复印件、仓库收货因执单',
     'desc2'=>'保价金额: 0.00<br>用户单号:96516454145',
@@ -157,7 +158,7 @@ echo $s;
 
 ### 开源协议 
 
-[LICENSE](LICENSE)
+[Apache License 2.0](LICENSE)
  
   
  

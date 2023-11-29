@@ -108,7 +108,7 @@ class Db extends Base{
             'left'=>9, 
             'size'=>'9px',
             'right'=>22,
-            'text'=>$this->parse_address($receiver['address']),
+            'text'=>$option['to']?:$this->parse_address($receiver['address']),
             'bold'=>false,
         ]);  
 
