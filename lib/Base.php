@@ -24,7 +24,7 @@ class Base{
 		   'margin_top' => 5,
 		   'margin_left' => 5,
 		   'margin_right' => 5,
-		   'mirrorMargins' => false
+		   'mirrorMargins' => false,
 		]);
 		$mpdf->WriteHTML($body);
 		if($save_path){
@@ -68,12 +68,33 @@ class Base{
         ";
 	}
 
-	public function center($text,$font){
-		return "<div style='display:flex;align-items:center;justify-content:center;text-align:center;font-size:".$font."'>".$text."</div>";
+	public function font_pt_px($font){
+		if(strpos($font,'pt') !== false ){
+			return $font;
+		}else if(strpos($font,'px') !== false ){
+			return $font;
+		}else if(strpos($font,'mm') !== false ){
+			return $font;
+		} 
+		return $font.'px';
 	}
-
+	/*
+	* 文字居中
+	* $font支持 12 对应 12px
+	* 或直接 12pt  12px 12mm
+	*/
+	public function center($text,$font){
+		$font = $this->font_pt_px($font);
+		return "<div style='display:flex;align-items:center;justify-content:center;text-align:center;font-size:".$font.";'>".$text."</div>";
+	}
+	/*
+	* 文字居右
+	* $font支持 12 对应 12px
+	* 或直接 12pt  12px 12mm
+	*/
     public function right($text,$font){
-		return "<div style='display:flex;align-items:center;justify-content:center;text-align:right;font-size:".$font."'>".$text."</div>";
+    	$font = $this->font_pt_px($font);
+		return "<div style='display:flex;align-items:center;justify-content:center;text-align:right;font-size:".$font.";'>".$text."</div>";
 	}
 
 	public function barcode($code,$arr = []){
@@ -88,8 +109,12 @@ class Base{
 			$str = '';
 		}
 		$generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-		return '<div style="text-align:center;width:100%;display:flex;justify-content:center;align-items:center;margin-top:6px;">
-			<img src="' . get_barcode($code, $this->barcode_type,2,$height) . '" style="width:'.$width.';" />			
+		$img_str = '';
+		if($height){
+			$img_str = "height:".$height*0.75."px;overflow:hidden;";
+		}
+		return '<div style="text-align:center;width:100%;display:flex;justify-content:center;align-items:center;margin-top:6px;overflow:hidden;">
+			<img src="' . get_barcode($code, $this->barcode_type,2,$height) . '" style="width:'.$width.';'.$img_str.'’" />			
 		</div>';
 	}
 
@@ -97,6 +122,22 @@ class Base{
 		$text = $arr['text'];
 		$rotate = $arr['rotate']?:0;
 		$ele_str = $this->get_html_option($arr);
+		$len = get_gbk_len($text);
+		$w  = $arr['width'];
+		if($text && $w && $arr['br']){ 
+			if($len > $w){
+				$total = ceil($len/$w);
+				$new_text = '';
+				for($i = 0;$i < $total;$i++){
+					$j = $i*$w;
+					$new_text .= substr($text,$j,$w)."<br>";
+				}
+				$text = $new_text;
+			}  
+			if(strpos($text,'<br>')!==false){
+				$text = substr($text,0,-4);
+			} 
+		}
 		if($text == '收'){
 			$this->init();
 			$text = "<img src='".$this->revice_img_url."' style='width:33px;height:33px;margin_left:0px;' />";
@@ -104,7 +145,7 @@ class Base{
 			$this->init();
 			$text = "<img src='".$this->sender_img_url."' style='width:20px;height:20px;' />";
 		}
-		$str = "<div style='max-height: 10px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; position: absolute; font-size:16px;rotate:$rotate;".$ele_str." '>$text</div>";
+		$str = "<div style='position: absolute;rotate:$rotate;".$ele_str." '>$text</div>"; 
 		$this->str .= $str;
 	}
 
