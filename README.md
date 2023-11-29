@@ -23,15 +23,15 @@ cp vendor/express_template/img  到对应的web目录
 
 ~~~
 use ExpressTemplate\Zto;  
-$zto = new Zto;
-$zto->image_url = '';
+$tpl = new Zto;
+$tpl->image_url = '';
 //收 图片的URL地址
-$zto->revice_img_url = "http://sf1/wp-content/plugins/express/lib/template/revice.png";
+$tpl->revice_img_url = "http://sf1/wp-content/plugins/express/lib/template/revice.png";
 //底部左侧二维码的URL地址
-$zto->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/zto_qr.png";
+$tpl->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/zto_qr.png";
 //保存的路径 
 $save_path = __DIR__.'/d.pdf'; 
-$s = $zto->output([
+$s = $tpl->output([
     'time'=>'2023-01',
     'bill_code'=>73100118865046,//运单号
     'mark'=>'356-01-02AOF3-11',//大头笔
@@ -64,15 +64,15 @@ echo $s;
 
 ~~~ 
 use ExpressTemplate\Yd;  
-$yd = new Yd; 
+$tpl = new Yd; 
 //收 图片的URL地址
-$yd->revice_img_url = "http://sf1/wp-content/plugins/express/lib/template/revice.png";
-$yd->sender_img_url = "http://sf1/wp-content/plugins/express/lib/template/sender.png";
+$tpl->revice_img_url = "http://sf1/wp-content/plugins/express/lib/template/revice.png";
+$tpl->sender_img_url = "http://sf1/wp-content/plugins/express/lib/template/sender.png";
 //底部左侧二维码的URL地址
-$yd->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/db_qr.jpg";
+$tpl->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/db_qr.jpg";
 //保存的路径 
 $save_path = __DIR__.'/d.pdf'; 
-$s = $yd->output([
+$s = $tpl->output([
     'time'=>now(),
     'bill_code'=>31213671370856,//运单号
     'mark'=>'300A G262-00 F3',//大头笔
@@ -104,15 +104,15 @@ echo $s;
 ### 德邦
 ~~~
 use ExpressTemplate\Db;  
-$yd = new Db; 
+$tpl = new Db; 
 //收 图片的URL地址
-$yd->revice_img_url = "http://sf1/wp-content/plugins/express/lib/template/revice.png";
-$yd->sender_img_url = "http://sf1/wp-content/plugins/express/lib/template/sender.png";
+$tpl->revice_img_url = "http://sf1/wp-content/plugins/express/lib/template/revice.png";
+$tpl->sender_img_url = "http://sf1/wp-content/plugins/express/lib/template/sender.png";
 //底部左侧二维码的URL地址
-$yd->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/db_qr.jpg";
+$tpl->qr_url         = "http://sf1/wp-content/plugins/express/lib/template/db_qr.jpg";
 //保存的路径 
 $save_path = __DIR__.'/d.pdf'; 
-$s = $yd->output([
+$s = $tpl->output([
     'time'=>now(),
     'bill_code'=>312136713707566,//运单号
     //子单
