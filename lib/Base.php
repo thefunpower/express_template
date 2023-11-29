@@ -121,22 +121,10 @@ class Base{
 	public function text($arr){
 		$text = $arr['text'];
 		$rotate = $arr['rotate']?:0;
-		$ele_str = $this->get_html_option($arr);
-		$len = get_gbk_len($text);
+		$ele_str = $this->get_html_option($arr); 
 		$w  = $arr['width'];
 		if($text && $w && $arr['br']){ 
-			if($len > $w){
-				$total = ceil($len/$w);
-				$new_text = '';
-				for($i = 0;$i < $total;$i++){
-					$j = $i*$w;
-					$new_text .= substr($text,$j,$w)."<br>";
-				}
-				$text = $new_text;
-			}  
-			if(strpos($text,'<br>')!==false){
-				$text = substr($text,0,-4);
-			} 
+			 $text = text_add_br($text,$w); 
 		}
 		if($text == '收'){
 			$this->init();
