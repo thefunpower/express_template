@@ -2,7 +2,7 @@
 namespace ExpressTemplate;
 //德邦
 class Db extends Base{  
-	public $name = 'db';  
+    public $name = 'db';  
     public function output($option = []){
         $this->str = "";  
         $type = $option['type'];
@@ -89,14 +89,12 @@ class Db extends Base{
 
         $this->text([   
             'top'=>8, 
-            'left'=>4,
-            'right'=>4,
-            'text'=>$this->center($mark,'16px'),
-            'size'=>'16px',
+            'left'=>4, 
+            'text'=>$this->center($mark,'20pt'), 
             'bold'=>true,
         ]); 
         $this->text([ 
-            'top'=>16, 
+            'top'=>18, 
             'left'=>4, 
             'size'=>'9px',
             'right'=>22,
@@ -104,7 +102,7 @@ class Db extends Base{
             'bold'=>false,
         ]); 
         $this->text([ 
-            'top'=>16, 
+            'top'=>18, 
             'left'=>9, 
             'size'=>'9px',
             'right'=>22,
