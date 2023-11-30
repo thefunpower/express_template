@@ -123,10 +123,10 @@ class Db extends Base{
 
         $this->text([ 
             'top'=>26, 
-            'left'=>54, 
-            'size'=>'9px', 
-            'width'=>15, 
-            'text'=>$sub_title,
+            'right'=>5,
+            'width'=>10, 
+            'size'=>'9px',             
+            'text'=>$this->right($sub_title,'9px'),
             'bold'=>false,
         ]);  
         if($sub_bill_code){ 

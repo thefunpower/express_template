@@ -237,6 +237,14 @@ class Base{
 		return $this->str;
 	}
 
+	public function html($text = '',$attr = []){
+		$str = "";
+		foreach($attr as $k=>$v){
+			$str .= $k.":".$v.";";
+		}
+		return "<div style='".$str."'>".$text."</div>";
+	}
+
 	protected function get_html_option($arr){
 		$size  = $arr['size'];
 		$top   = $arr['top'];
