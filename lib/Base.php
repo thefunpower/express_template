@@ -112,10 +112,11 @@ class Base{
 		$img_str = '';
 		if($height){
 			$img_str = "height:".$height*0.75."px;overflow:hidden;";
-		}
-		return '<div style="text-align:center;width:100%;display:flex;justify-content:center;align-items:center;margin-top:6px;overflow:hidden;">
-			<img src="' . get_barcode($code, $this->barcode_type,2,$height) . '" style="width:'.$width.';'.$img_str.'’" />			
-		</div>';
+		}  
+		return '<div style="text-align:center;width:100%;display:flex;justify-content:center;align-items:center;margin-top:6px;">
+			<img src="' . get_barcode($code, 'C128',2,$height) . '" style="width:'.$width.';'.$img_str.'" />
+			'.$str.'
+		</div>';   
 	}
 
 	public function text($arr){
