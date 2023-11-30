@@ -38,7 +38,7 @@ class Db extends Base{
         $this->bill_code_lr([
             'bill_code'=>$bill_code,
             'top'=>21,
-            'space'=>5,
+            'space'=>3,
             'right'=>1,
             'rotate'=>-90,
             'num'=>3, 
