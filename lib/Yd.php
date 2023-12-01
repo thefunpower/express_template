@@ -90,7 +90,7 @@ class Yd extends Base{
         $this->bill_code_tb([
             'bill_code'=>$bill_code,
             'bottom'=>1,
-            'space'=>3,  
+            'space'=>1,  
             'num'=>3, 
             'left'=>3, 
             'prefix'=>'*&nbsp;&nbsp;'
