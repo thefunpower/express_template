@@ -2,9 +2,10 @@
 namespace ExpressTemplate;
 //韵达
 class Yd extends Base{  
-	public $name = 'yd';  
+    public $name = 'yd';  
     public function output($option = []){  
         $this->str = "";
+        $to = $option['to'];
         $type = $option['type'];
         $return_content = $option['return_content']; 
         $name = $option['name'];
@@ -136,6 +137,29 @@ class Yd extends Base{
             'left'=>4, 
             'width'=>50,
         ]); 
+        if($to){
+            if(is_array($to)){
+                $this->html($to[0],[ 
+                    'position'=>'absolute', 
+                    'top'=>'40.5mm', 
+                    'left'=>'6mm', 
+                    'font-size'=>'10pt',
+                ]); 
+                $this->html($to[1],[  
+                    'position'=>'absolute', 
+                    'top'=>'40.5mm', 
+                    'right'=>'23mm', 
+                ]); 
+            }else{
+                $this->html($to,[ 
+                    'position'=>'absolute', 
+                    'top'=>'40.5mm', 
+                    'left'=>'6mm', 
+                    'font-size'=>'10pt',
+                ]); 
+            } 
+        } 
+
         if($bag_addr_2){
             $bag_addr_2 = '-'.$bag_addr_2;
         }

@@ -243,7 +243,7 @@ class Base{
 		foreach($attr as $k=>$v){
 			$str .= $k.":".$v.";";
 		}
-		return "<div style='".$str."'>".$text."</div>";
+		$this->str.="<div style='".$str."'>".$text."</div>";
 	}
 
 	protected function get_html_option($arr){
